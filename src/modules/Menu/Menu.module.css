@@ -1,0 +1,41 @@
+
+.menu {
+    width: 90%;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    background-color: #75BDF8;
+    border-radius: 2vw;
+}
+
+.wrapper {
+    width: 70%;
+    height: 90%;
+
+    display: grid;
+    grid-template-rows: 20% 77%;
+    grid-auto-flow: row;
+    row-gap: 3%;
+    align-items: center;
+
+}
+
+.items {
+    height: 95%;
+    width: 100%;
+    align-self: self-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.items li {
+    list-style: none;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.5vw;
+    cursor: pointer;
+}

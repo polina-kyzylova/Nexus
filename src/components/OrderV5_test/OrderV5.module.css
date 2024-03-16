@@ -1,0 +1,336 @@
+
+
+/*---------- ALL order content ----------*/
+.container {
+    width: 90%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 7% auto 15%;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+}
+
+/*----- Order header ------*/
+.header {
+    width: 100%;
+    height: 100%;
+    border-bottom: #455057 solid 1.5px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.2vw;
+}
+
+/*----- Order body ------*/
+.body {
+    height: 100%;
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body h5 {
+    color: #E65659;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 0.9vw;
+    margin-top: 2%;
+}
+
+
+
+
+
+/*----- Order items ------*/
+.order {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.order p {
+    color: #696F73;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+    width: 16vw;
+}
+
+.area, .title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.area textarea {
+    max-height: 10vw;
+    max-width: 18vw;
+    min-height: 4vw;
+    min-width: 18vw;
+
+    height: 4vw;
+    width: 18vw;
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    padding: 3%;
+
+    background-color: #fff;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.title input {
+    height: 1vw;
+    width: 18vw;
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    padding: 1% 3%; 
+
+    background-color: #fff;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+
+
+
+/*---------- Загрузка файлов ----------*/
+.drag_area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop_area {
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #455057 dashed 2.5px; 
+    border-radius: 0.3vw;
+}
+
+.files_uploader {
+    margin-top: 4%;
+    color: #1670B7;
+    font-size: 0.9vw;
+
+    cursor: pointer;
+}
+
+.files_uploader input {
+    z-index: 2;
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.files_uploader span {
+    position: relative;
+    background-color: #696F73;
+    color: #0D1012;
+    padding: 3% 8%;
+    border-radius: 0.5vw;
+    font-size: 0.9vw;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+
+
+/*---------- Загруженные файлы ----------*/
+.document {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.upload {
+    width: 16vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload p {
+    margin-bottom: 2%;
+}
+
+.files {
+    width: 20vw;
+    height: 6vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: transparent;
+}
+
+.files_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border: #455057 solid 1.5px; 
+    border-radius: 0.3vw;
+    padding: 1%;
+    margin-top: 1%;
+
+    margin-right: 2%;
+    box-sizing: border-box;
+}
+
+.val {
+    width: 17vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.val p {
+    font-family: 'Overpass';
+    color: black;
+    margin-left: 1%;
+}
+
+.files_item button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: black;
+    font-size: 0.9vw;
+    cursor: pointer;
+    padding-right: 2%;
+}
+
+
+
+
+/*----- Order footer ------*/
+.footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel_btn, .sent_btn {
+    background-color: #46FF96;
+    color: #0D1012;
+
+    border: none;
+    outline: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    width: 30%;
+    height: 3.5vw;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+}
+
+.cancel_btn {
+    background-color: #696F73;
+    color: #0D1012;
+    margin-right: 3%;
+}
+
+
+
+
+/*---------- ALL Success order content ----------*/
+.success {
+    width: 90%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 15% 35% auto 15%;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.success span {
+    color: #4FF597;
+}
+
+.success img {
+    width: 15vw;
+}
+
+.success_info {
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.success_info p {
+    line-height: 1.7vw;
+    margin-left: 5%;
+}
+
+.success_info span {
+    color: #74BDF8;
+}
+
+.success_btn {
+    background-color: #4FF597;
+    color: #0D1012;
+
+    border: none;
+    outline: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    width: 30%;
+    height: 3.5vw;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+}
+

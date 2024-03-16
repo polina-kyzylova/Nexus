@@ -1,0 +1,98 @@
+
+.input_box {
+    width: 100%;
+    height: 3.5vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7%;
+    border: solid #75BDF8 0.07vw;
+    border-radius: 1vw;
+}
+  
+.input_box input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+    font-style: normal;
+    font-weight: 100;
+    padding-left: 3%;
+    z-index: 2;
+}
+  
+.input_box select {
+    width: 40%;
+    height: 100%;
+    padding-left: 3%;
+    background-color: #0D1012;
+    border-left: solid #75BDF8 0.07vw;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+    border-radius: 0 1vw 1vw 0;
+    outline: none;
+  
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+    font-style: normal;
+    font-weight: 100;
+    z-index: 2;
+  
+    cursor: pointer;
+    margin-right: 3%;
+}
+  
+.input_box label {
+    z-index: 1;
+    padding-left: 3%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  
+    color: dimgray;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+    font-style: normal;
+    font-weight: 100;
+    transition: .3s ease;
+}
+  
+
+
+/*----- Enter Sobaka -----*/
+.input_box.full #email_prefix {
+    display: none;
+}
+  
+.input_box #email_prefix {
+    display: block;
+}
+
+
+/*----- Active input -----*/
+.input_box input:focus ~ label,
+.input_box input:valid ~ label {
+  top: -20%;
+  color: #75BDF8;
+  background-color: #0D1012;
+  transform: scale(0.9);
+  padding-right: 1.5%;
+  padding-left: 1.5%;
+  margin-left: 1%;
+  border-radius: none;
+}
+
+
+  

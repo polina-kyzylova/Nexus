@@ -1,0 +1,241 @@
+
+
+/*---------- ALL order content ----------*/
+.container {
+    width: 90%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 7% auto 15%;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+}
+
+/*----- Order header ------*/
+.header {
+    width: 100%;
+    height: 100%;
+    border-bottom: #455057 solid 1.5px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.2vw;
+}
+
+
+
+/*----- Order body ------*/
+.body {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+
+/*-- Order block --*/
+.order {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.order_purpose, .order_format, .order_amount {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 45% auto;
+    grid-auto-flow: column;
+    align-items: center;
+    margin-top: 7%;
+}
+
+.order p {
+    color: #696F73;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.purpose_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.purpose_content textarea {
+    max-height: 8vw;
+    max-width: 17vw;
+    min-height: 4vw;
+    min-width: 17vw;
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    padding: 3%;
+
+    background-color: #fff;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.purpose_content h5 {
+    color: #E65659;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 0.9vw;
+    margin-top: 2%;
+}
+
+.order_format select {
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    background-color: #fff;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+
+    height: 2vw;
+    width: 12vw;
+    padding-left: 3%;
+}
+
+.amount_content {
+    display: flex;
+    flex-direction: row;
+}
+
+.amount_content button {
+    height: 2vw;
+    width: 2vw;
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    background-color: #696F73;
+    color: #0D1012;
+    cursor: pointer;
+}
+
+.amount_content input {
+    height: 2vw;
+    width: 7vw;
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    margin-right: 3%;
+    margin-left: 3%;
+
+    text-align: center;
+    background-color: #fff;
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+
+
+/*----- Order footer ------*/
+.footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel_btn, .sent_btn {
+    background-color: #46FF96;
+    color: #0D1012;
+
+    border: none;
+    outline: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    width: 30%;
+    height: 3.5vw;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+}
+
+.cancel_btn {
+    background-color: #696F73;
+    color: #0D1012;
+    margin-right: 3%;
+}
+
+
+
+
+/*---------- ALL Success order content ----------*/
+.success {
+    width: 90%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 15% 35% auto 15%;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+.success span {
+    color: #4FF597;
+}
+
+.success img {
+    width: 15vw;
+}
+
+.success_info {
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.success_details, .success_values {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    color: #696F73;
+}
+
+.success_values {
+    width: auto;
+    color: #fff;
+}
+
+.success_btn {
+    background-color: #4FF597;
+    color: #0D1012;
+
+    border: none;
+    outline: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    width: 30%;
+    height: 3.5vw;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+.form {
+    width: auto;
+    height: 85%;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D1012;
+    border-radius: 2vw;
+}
+
+.section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h2 {
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.7vw;
+}
+
+.enter_btn, .reset_btn {
+    border: none;
+    outline: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    align-self: center;
+    width: 60%;
+    height: 3.5vw;
+    background-color: #75BDF8;
+
+    color: #0D1012;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.1vw;
+    margin-bottom: 2%;
+}
+
+.reset_btn {
+    background-color: #04375F;
+    color: #75BDF8;
+    margin-bottom: 0;
+}
+
