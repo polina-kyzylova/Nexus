@@ -3,6 +3,7 @@ import styles from './OrdersHistory.module.css'
 import image from './orders_history.png'
 import arrow from './arrow_gray.png'
 import OrderItem from '../../components/OrderItem/OrderItem'
+import { Link } from 'react-router-dom'
 
 
 const OrdersHistory = () => {
@@ -12,7 +13,10 @@ const OrdersHistory = () => {
                 <div className={styles.orders_header}>
                     <img className={styles.image} src={image} alt=''/>
                     <BlueLabel label='История заявок'/>
-                    <img className={styles.arrow} src={arrow} alt=''/>
+
+                    <Link className={styles.arrow} to="/history">
+                        <img src={arrow} alt='' />
+                    </Link>
                 </div>
 
                 <OrderItem

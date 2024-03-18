@@ -17,15 +17,35 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
-.card_header p {
+.card_header button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.card_header img {
+    width: 2vw;
+    cursor: pointer;
+}
+
+.header_labels {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header_labels p {
     padding-left: 3%;
     color: #fff;
     font-family: 'Overpass';
     font-weight: 200;
     font-size: 1.2vw;
 }
+
 
 
 

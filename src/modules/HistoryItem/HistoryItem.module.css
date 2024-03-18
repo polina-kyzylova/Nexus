@@ -1,0 +1,144 @@
+
+.container {  
+    width: 97vw;
+    height: 45vh;
+    display: flex;
+
+    margin-top: 0;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*----- Order content -----*/
+.core {
+    height: 100%;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 15% auto;
+
+    background-color: #1B1F22;
+    border-radius: 2vw;
+}
+
+.core_header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 4%;
+    padding-top: 3%;
+}
+
+.core_header h1 {
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 600;
+    font-size: 1.6vw;
+}
+
+.core_header h2 {
+    color: #46FF96;
+    font-family: 'Overpass';
+    font-weight: 200;
+    font-size: 1.2vw;
+    padding-left: 3%;
+}
+
+
+.recipient {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    height: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.docum {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    height: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: #323E48 solid 0.1vw; 
+}
+
+.place {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    height: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: #323E48 solid 0.1vw; 
+}
+
+
+.thing {
+    width: 80%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.thing img {
+    width: 2.5vw;
+}
+
+.thing h3 {
+    color: #74BDF8;
+    font-family: 'Overpass';
+    font-weight: 200;
+    font-size: 1.2vw;
+    padding-left: 3%;
+}
+
+.info {
+    width: 80%;
+    margin-top: 9%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info p {
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 100;
+    font-size: 1vw;
+    margin-bottom: 5%;
+}
+
+
+
+/*----- Order result -----*/
+.result {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    height: 85%;
+    align-self: center;
+    border-left: #323E48 solid 0.1vw; 
+}

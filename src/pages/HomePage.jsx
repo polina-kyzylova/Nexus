@@ -21,6 +21,7 @@ const HomePage = () => {
 
 
     // DONT TOUCH
+    
     return (
         <div className={styles.page}>
             <SideMenu />
@@ -35,6 +36,7 @@ const HomePage = () => {
             </div>
         </div>
     );
+    
     
 
 

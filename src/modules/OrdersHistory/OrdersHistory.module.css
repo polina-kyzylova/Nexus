@@ -33,6 +33,9 @@
 
 .arrow {
     justify-self: flex-end;
-    width: 0.8vw;
     cursor: pointer;
+}
+
+.arrow img {
+    width: 0.8vw;
 }

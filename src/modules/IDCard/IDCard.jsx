@@ -1,14 +1,25 @@
 import styles from './IDCard.module.css'
 import photo from './student.png'
 import BlueLabel from '../../components/BlueLabel'
+import open from './openCard.png'
+import IDCardModal from '../IDCardModal/IDCardModal'
+import { useState } from 'react'
 
 
 const IDCard = () => {
+    const [openIDCard, setOpenIDCard] = useState(false);
+
     return (
         <div className={styles.card}>
             <div className={styles.card_header}>
-                <BlueLabel label='Студенческий билет'/>
-                <p>№11-11-123456</p>
+                <div className={styles.header_labels}>
+                    <BlueLabel label='Студенческий билет'/>
+                    <p>№11-11-123456</p>
+                </div>
+
+                <button onClick={() => setOpenIDCard(true)}>
+                    <img src={open} alt='' />
+                </button>
             </div>
 
 
@@ -31,6 +42,9 @@ const IDCard = () => {
                     <li>01 сентября 2022 г.</li>
                 </ul>
             </div>
+
+
+            <IDCardModal active={openIDCard} setActive={setOpenIDCard}/>
         </div>
     )
 }

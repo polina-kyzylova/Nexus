@@ -1,4 +1,4 @@
-import { Form } from '../modules/LoginForm'
+import { Form } from '../modules/LoginForm/LoginForm'
 import Logo from '../components/Logo/Logo'
 
 

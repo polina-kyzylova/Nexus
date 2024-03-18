@@ -1,0 +1,43 @@
+
+/*----- Order status -----*/
+.status {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    box-sizing: border-box;
+    border: 0.15vw solid #1670B7;
+    border-radius: 2vw;
+    margin-right: -5%;
+}
+
+.status p {
+    font-family: 'Overpass';
+    font-weight: 200;
+    font-size: 1vw;
+    cursor: pointer;
+    color: #E65659;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+
+.status_label {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1670B7;
+    border-top-left-radius: 1.7vw;
+}
+
+#label {
+    margin-left: -15%;
+    color: #000;
+    font-family: 'Overpass';
+    font-weight: 200;
+    font-size: 1.2vw;
+    padding: 0;
+}
