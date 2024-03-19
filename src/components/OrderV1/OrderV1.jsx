@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styles from './OrderV1.module.css'
 import image from '../success_orded.png'
 import CurrentDate from "../CurrentDate";
-import OrderTemplate from '../OrderTemplate'
+import OrderTemplate from '../OrderTemplate';
+import { useSelector } from "react-redux";
 
 
 const OrderV1 = ({active, setActive, orderNumber}) => {
@@ -12,15 +13,48 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
     const [order, setOrder] = useState(true);
     const [valid, setValid] = useState(false);
 
+    const user = useSelector(state => state.user);
+    const url = useSelector(state => state.service.urlV1);
+
+
     const MinAmount = () => {
         if (amount > 1) setAmount(amount - 1);
         else setAmount(1);
     }
 
-    const ValidOrder = () => {
+    const sentOrder = () => {
         if (format !== '' && purpose !== '') {
-            setValid(false)
-            setOrder(false)
+            fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({
+                    "IDСтудента": user.id,
+                    "Назначение": active,
+                    "ЦельПолучения": purpose,
+                    "ФИО": `${user.surname} ${user.name} ${user.last_name}`,
+                    "Количество": amount,
+                    "Формат": format,
+                    "Группа": user.group,
+                    "Почта": user.email,
+                    "Телефон": user.phone
+                }),
+                headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+              console.log(data);
+            })
+            .catch(error => {
+              console.log('Error fetching data: ', error);
+            });
+
+
+            setValid(false);
+            setOrder(false);
         }
         else {
             setValid(true)
@@ -106,30 +140,14 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
 
             <div className={styles.footer}>
                 <button className={styles.cancel_btn} onClick={() => setActive(false)}>Отмена</button>
-                <button className={styles.sent_btn} onClick={() => ValidOrder()}>Отправить</button>
+                <button className={styles.sent_btn} onClick={() => sentOrder()}>Отправить</button>
             </div>
         </div> :
 
         <div className={styles.success}>
             <h2>Заявка <span>№{orderNumber}</span> отправлена!</h2>
             <img src={image} alt=''/>
-
-            <div className={styles.success_info}>
-                <ul className={styles.success_details}>
-                    <li>Срок исполнения:</li>
-                    <li>Место получения:</li>
-                    <li>Методист:</li>
-                    <li>Часы работы:</li>
-                </ul>
-
-                <ul className={styles.success_values}>
-                    <li>3 рабочих дня (вы получите уведомление)</li>
-                    <li>Территориальный отдел №1, корпус 7, кабинет 206</li>
-                    <li>Петрова Александра Сергеевна</li>
-                    <li>09:00-12:00, 13:00-17:00</li>
-                </ul>
-            </div>
-
+            <p>Срок исполнения: 3 рабочих дня (вы получите уведомление)</p>
             <button className={styles.success_btn} onClick={() => {setActive(false); setOrder(true)}}>Ок</button>
         </div> 
     )

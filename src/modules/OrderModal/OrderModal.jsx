@@ -13,7 +13,7 @@ const OrderModal = ({active, setActive, orderNumber}) => {
     const [order, setOrder] = useState(true);
 
     function orderVariant(act) {
-        if (act === 'Справка с места учебы' || act === 'Табель успеваемости') {
+        if (act === 'Справка с места обучения' || act === 'Табель успеваемости') {
             return (
                 <OrderV1
                 active={active}

@@ -2,8 +2,10 @@ import styles from './OrderItem.module.css'
 
 
 const OrderItem = ({orderNumber, orderDate, orderStatus}) => {
-    const status = {
-        backgroundColor: '#42515D',
+    function showStatus() {
+        if (orderStatus === 'В обработке') return <span style={{backgroundColor: '#1670B7'}}>{orderStatus}</span>
+        if (orderStatus === 'Готово') return <span style={{backgroundColor: '#46FF96'}}>{orderStatus}</span>
+        if (orderStatus === 'Получено') return <span style={{backgroundColor: '#323E48'}}>{orderStatus}</span>  //696F73
     }
 
     return (
@@ -13,7 +15,7 @@ const OrderItem = ({orderNumber, orderDate, orderStatus}) => {
                 <p>№{orderNumber}</p>
             </div>
 
-            <span style={status}>{orderStatus}</span>
+            {showStatus()}
         </div>
     )
 }
@@ -21,9 +23,3 @@ const OrderItem = ({orderNumber, orderDate, orderStatus}) => {
 
 export default OrderItem;
 
-
-/*
-background-color: #42515D; gray
-background-color: #46FF96; green
-background-color: #1670B7; blue
- */

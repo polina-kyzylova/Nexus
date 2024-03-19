@@ -19,7 +19,7 @@ const CreatingOrders = () => {
                 <BlueLabel label='Подать заявку'/>
 
                 <div className={styles.items}>
-                    <button onClick={() => setModalActive('Справка с места учебы')}>Справка с места учебы</button>
+                    <button onClick={() => setModalActive('Справка с места обучения')}>Справка с места обучения</button>
                     <button onClick={() => setModalActive('Табель успеваемости')}>Табель успеваемости</button>
                     <button onClick={() => setModalActive('Повышенная стипендия')}>Повышенная стипендия</button>
                     <button onClick={() => setModalActive('Перевод на бюджетное место')}>Перевод на бюджетное место</button>

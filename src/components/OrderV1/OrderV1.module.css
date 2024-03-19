@@ -201,30 +201,6 @@
     width: 15vw;
 }
 
-.success_info {
-    width: 80%;
-    height: 70%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.success_details, .success_values {
-    height: 100%;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    list-style: none;
-    color: #696F73;
-}
-
-.success_values {
-    width: auto;
-    color: #fff;
-}
-
 .success_btn {
     background-color: #4FF597;
     color: #0D1012;

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 
-
 const initialState = {
     orders: [{
         order_id: null,
@@ -17,19 +16,15 @@ const initialState = {
         reason: null,
         title: null,
         text: null,
-        files: [],
     }]
 };
-
-
-
 
 
 const ordersSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        addOrder5(state, action) {
+        addOrder(state, action) {
             state.orders.order_id = action.payload.order_id;
             state.orders.status = action.payload.status;
             state.orders.order_purpose = action.payload.order_purpose;
@@ -40,5 +35,5 @@ const ordersSlice = createSlice({
 });
 
 
-export const {addOrder5} = ordersSlice.actions;
+export const {addOrder} = ordersSlice.actions;
 export default ordersSlice.reducer;
