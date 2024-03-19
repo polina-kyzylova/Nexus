@@ -1,5 +1,5 @@
 # About
-<p>Nexus is a multi-functional platform that allows students to interact effectively with all aspects of the learning process. The platform offers various modules that help students complete courses, submit assignments, communicate with instructors, monitor progress, check schedules, manage tasks, and more.</p>
+<p>Nexus is a multi-functional platform that allows students to interact effectively with all aspects of the learning process. The platform offers various modules that help students complete courses, submit assignments, communicate with professors, monitor progress, check schedules, manage tasks, and more.</p>
 
 <p>As part of the project, I have been developing a module for the receipt and submission of documents, which aims to facilitate faster and more convenient ordering of necessary paperwork. Through this feature, students will be able to remotely interact with the university’s administration office and monitor the progress of their application process.</p>
 
