@@ -3,7 +3,7 @@ import styles from './OrderV2.module.css'
 import image from '../success_orded.png'
 import doc from '../template_doc.png'
 import FolderIcon from '@mui/icons-material/Folder';
-import CurrentDate from "../CurrentDate";
+import currentDate from "../../hooks/currentDate";
 import OrderTemplate from '../OrderTemplate'
 
 
@@ -111,7 +111,7 @@ const OrderV2 = ({active, setActive, orderNumber}) => {
         order ?
         <div className={styles.container}>
             <div className={styles.header}>
-                <CurrentDate />
+                <h4 className={styles.data}>Заявка от {currentDate()}</h4>
             </div>
 
 

@@ -1,17 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-/* DONT TOUCH
-const initialState = {
-    email: null,
-    token: null,
-    id: null,
-    name: null,
-    last_name: null,
-    surname: null,
-    group: null,
-};
-*/
-
 
 const initialState = {
     email: 'martynovio@std.tyuiu.ru',
@@ -22,9 +10,10 @@ const initialState = {
     last_name: 'Олегович',
     surname: 'Мартынов',
     group: 'ЭББ-22-1',
+    eduForm: 'Очная',
+    enrolled: '1234 о/п 22.08.2022 г.',
+    acceptDate: '05 сентября 2022 г.'
 };
-
-
 
 
 const userSlice = createSlice({
@@ -40,6 +29,9 @@ const userSlice = createSlice({
             state.last_name = action.payload.last_name;
             state.surname = action.payload.surname;
             state.group = action.payload.group;
+            state.eduForm = action.payload.eduForm;
+            state.enrolled = action.payload.enrolled;
+            state.acceptDate = action.payload.acceptDate;
         },
         removeUser(state) {
             state.email = null;
@@ -50,6 +42,9 @@ const userSlice = createSlice({
             state.last_name = null;
             state.surname = null;
             state.group = null;
+            state.eduForm = null;
+            state.enrolled = null;
+            state.acceptDate = null;
         },
     },
 });

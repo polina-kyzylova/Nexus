@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./OrderV5.module.css";
 import FolderIcon from "@mui/icons-material/Folder";
 import image from "../success_orded.png";
-import CurrentDate from "../CurrentDate";
+import currentDate from "../../hooks/currentDate";
 import OrderTemplate from "../OrderTemplate";
 
 
@@ -79,7 +79,7 @@ const OrderV5 = ({ active, setActive, orderNumber }) => {
         order ? 
         <div className={styles.container}>
             <div className={styles.header}>
-                <CurrentDate />
+                <h4 className={styles.data}>Заявка от {currentDate()}</h4>
             </div>
 
             <div className={styles.body}>

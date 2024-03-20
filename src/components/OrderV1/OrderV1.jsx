@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from './OrderV1.module.css'
-import image from '../success_orded.png'
-import CurrentDate from "../CurrentDate";
+import image from '../success_orded.png';
+import currentDate from "../../hooks/currentDate";
 import OrderTemplate from '../OrderTemplate';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addOrderV1 } from '../../store/slices/ordersSlice';
+
 
 
 const OrderV1 = ({active, setActive, orderNumber}) => {
@@ -15,15 +17,12 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
 
     const user = useSelector(state => state.user);
     const url = useSelector(state => state.service.urlV1);
+    const dispatch = useDispatch();
 
-
-    const MinAmount = () => {
-        if (amount > 1) setAmount(amount - 1);
-        else setAmount(1);
-    }
 
     const sentOrder = () => {
         if (format !== '' && purpose !== '') {
+            /*
             fetch(url, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -51,7 +50,17 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
             .catch(error => {
               console.log('Error fetching data: ', error);
             });
+            */
 
+            dispatch(addOrderV1({
+                orderNumber: '4',
+                orderDate: currentDate(),
+                status: 'В обработке',
+                orderPurpose: active,
+                orderReason: purpose,
+                docFormat: format,
+                docAmount: amount,
+            }));
 
             setValid(false);
             setOrder(false);
@@ -60,6 +69,11 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
             setValid(true)
             document.getElementById('purpose_textarea').style.border = '2px solid #E65659'
         }
+    }
+
+    const MinAmount = () => {
+        if (amount > 1) setAmount(amount - 1);
+        else setAmount(1);
     }
 
     function ValidText() {
@@ -95,7 +109,7 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
         order ?
         <div className={styles.container}>
             <div className={styles.header}>
-                <CurrentDate />
+                <h4 className={styles.data}>Заявка от {currentDate()}</h4>
             </div>
 
 

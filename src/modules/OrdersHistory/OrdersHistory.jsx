@@ -4,9 +4,43 @@ import image from './orders_history.png'
 import arrow from './arrow_gray.png'
 import OrderItem from '../../components/OrderItem/OrderItem'
 import { Link } from 'react-router-dom'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 
 const OrdersHistory = () => {
+    const orders = useSelector(state => state.orders);
+
+    function generate(array) {
+        return array.map((i) =>
+        React.cloneElement(
+            <OrderItem
+                orderNumber={orders[i-1].orderNumber}
+                orderDate={orders[i-1].orderDate}
+                orderStatus={orders[i-1].status}
+            />,
+            { key: i }
+        ));
+    }
+    
+    function showOrders() {
+        if (orders.length) {
+            let ordersArray = [];
+
+            if (orders.length < 3) {
+                for (let i=orders.length; i >= 1; i--) ordersArray.push(i);
+                return generate(ordersArray);
+            }
+            else {
+                for (let i=orders.length; i > orders.length - 3; i--) ordersArray.push(i);
+                return generate(ordersArray);
+            }
+        } else {
+            return <p className={styles.noOrders}>Нет текущих заявок</p>
+        }
+    }
+
+
     return (
         <div className={styles.orders}>
             <div className={styles.content}>
@@ -19,27 +53,10 @@ const OrdersHistory = () => {
                     </Link>
                 </div>
 
-                <OrderItem
-                    orderNumber='102411735'
-                    orderDate='23.11.2023'
-                    orderStatus='В обработке'
-                />
-
-                <OrderItem
-                    orderNumber='836296418'
-                    orderDate='20.11.2023'
-                    orderStatus='Готово'
-                />
-
-                <OrderItem
-                    orderNumber='764928387'
-                    orderDate='15.09.2022'
-                    orderStatus='Получено'
-                />
+                {showOrders()}
             </div>
         </div>
     )
 }
-
 
 export default OrdersHistory;

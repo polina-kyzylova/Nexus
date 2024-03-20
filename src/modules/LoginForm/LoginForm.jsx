@@ -39,6 +39,7 @@ const Form = () => {
     // authentification
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const handleLogin = (email, password) => {
         if (email && pass) {
             const auth = getAuth();

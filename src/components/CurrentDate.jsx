@@ -1,8 +1,8 @@
 import React from "react";
 
 
-const CurrentDate = () => {
-    function CurrentData() {
+const CurrentDateX = () => {
+    function CurrentDatax() {
         let current = new Date()
         let year = current.getFullYear()
         let month = current.getMonth()+1
@@ -22,9 +22,9 @@ const CurrentDate = () => {
     }
 
     return (
-        <h4 style={styles}>Заявка от {CurrentData()}</h4>
+        <h4 style={styles}>Заявка от {CurrentDatax()}</h4>
     )
 }
 
 
-export default CurrentDate;
+export default CurrentDateX;

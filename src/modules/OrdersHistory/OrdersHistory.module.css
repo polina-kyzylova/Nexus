@@ -17,6 +17,14 @@
     align-items: center;
 }
 
+.noOrders {
+    color: #323E48;
+    font-family: 'Overpass';
+    font-weight: 600;
+    font-size: 1.4vw;
+    margin: auto;
+}
+
 .orders_header {
     width: 100%;
     display: grid;

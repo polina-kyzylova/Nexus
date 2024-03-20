@@ -27,6 +27,14 @@
     font-size: 1.2vw;
 }
 
+.data {
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.2vw;
+}
+
+
 /*----- Order body ------*/
 .body {
     height: 100%;
