@@ -1,18 +1,18 @@
 import styles from './OrderItem.module.css'
 
 
-const OrderItem = ({orderNumber, orderDate, orderStatus}) => {
+const OrderItem = ({number, date, status}) => {
     function showStatus() {
-        if (orderStatus === 'В обработке') return <span style={{backgroundColor: '#1670B7'}}>{orderStatus}</span>
-        if (orderStatus === 'Готово') return <span style={{backgroundColor: '#46FF96'}}>{orderStatus}</span>
-        if (orderStatus === 'Получено') return <span style={{backgroundColor: '#323E48'}}>{orderStatus}</span>  //696F73
+        if (status === 'В обработке') return <span style={{backgroundColor: '#1670B7'}}>{status}</span>
+        if (status === 'Готово') return <span style={{backgroundColor: '#46FF96'}}>{status}</span>
+        if (status === 'Получено') return <span style={{backgroundColor: '#323E48'}}>{status}</span>  //696F73
     }
 
     return (
         <div className={styles.order}>
             <div className={styles.info}>
-                <h4>Заявка от {orderDate}</h4>
-                <p>№{orderNumber}</p>
+                <h4>Заявка от {date}</h4>
+                <p>№{number}</p>
             </div>
 
             {showStatus()}

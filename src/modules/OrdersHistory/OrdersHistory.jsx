@@ -15,9 +15,9 @@ const OrdersHistory = () => {
         return array.map((i) =>
         React.cloneElement(
             <OrderItem
-                orderNumber={orders[i-1].orderNumber}
-                orderDate={orders[i-1].orderDate}
-                orderStatus={orders[i-1].status}
+                number={orders[i-1].orderNumber}
+                date={orders[i-1].orderDate}
+                status={orders[i-1].status}
             />,
             { key: i }
         ));

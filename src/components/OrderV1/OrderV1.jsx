@@ -8,52 +8,52 @@ import { addOrderV1 } from '../../store/slices/ordersSlice';
 
 
 
-const OrderV1 = ({active, setActive, orderNumber}) => {
+const OrderV1 = ({active, setActive}) => {
     const [format, setFormat] = useState('Электронный');
     const [amount, setAmount] = useState(1);
     const [purpose, setPurpose] = useState('');
     const [order, setOrder] = useState(true);
     const [valid, setValid] = useState(false);
+    const [serverOrderNumber, setServerOrderNumber] = useState();
 
     const user = useSelector(state => state.user);
     const url = useSelector(state => state.service.urlV1);
     const dispatch = useDispatch();
+    const [ans, setAns] = React.useState();
 
 
-    const sentOrder = () => {
+    const getAnswer = async () => {
+      const res = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+            "IDСтудента": user.id,
+            "Назначение": active,
+            "ЦельПолучения": purpose,
+            "ФИО": `${user.surname} ${user.name} ${user.last_name}`,
+            "Количество": amount,
+            "Формат": format,
+            "Группа": user.group,
+            "Почта": user.email,
+            "Телефон": user.phone
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+    }) 
+      const data = await res.json();
+      setAns(data);
+    };
+  
+    React.useEffect(() => {
+      getAnswer();
+    }, []);
+
+    function sentOrder() {
         if (format !== '' && purpose !== '') {
-            /*
-            fetch(url, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify({
-                    "IDСтудента": user.id,
-                    "Назначение": active,
-                    "ЦельПолучения": purpose,
-                    "ФИО": `${user.surname} ${user.name} ${user.last_name}`,
-                    "Количество": amount,
-                    "Формат": format,
-                    "Группа": user.group,
-                    "Почта": user.email,
-                    "Телефон": user.phone
-                }),
-                headers: {
-                  'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-              console.log(data);
-            })
-            .catch(error => {
-              console.log('Error fetching data: ', error);
-            });
-            */
+            setServerOrderNumber(ans.Номер);
 
             dispatch(addOrderV1({
-                orderNumber: '4',
+                orderNumber: ans.Номер,
                 orderDate: currentDate(),
                 status: 'В обработке',
                 orderPurpose: active,
@@ -64,12 +64,13 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
 
             setValid(false);
             setOrder(false);
-        }
-        else {
+        } else {
             setValid(true)
             document.getElementById('purpose_textarea').style.border = '2px solid #E65659'
         }
     }
+
+
 
     const MinAmount = () => {
         if (amount > 1) setAmount(amount - 1);
@@ -159,7 +160,7 @@ const OrderV1 = ({active, setActive, orderNumber}) => {
         </div> :
 
         <div className={styles.success}>
-            <h2>Заявка <span>№{orderNumber}</span> отправлена!</h2>
+            <h2>Заявка <span>№{serverOrderNumber}</span> отправлена!</h2>
             <img src={image} alt=''/>
             <p>Срок исполнения: 3 рабочих дня (вы получите уведомление)</p>
             <button className={styles.success_btn} onClick={() => {setActive(false); setOrder(true)}}>Ок</button>

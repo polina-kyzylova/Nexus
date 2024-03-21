@@ -13,8 +13,8 @@ import CreatingOrders from "../modules/CreatingOrders/CreatingOrders";
 
 const HomePage = () => {
     //const {isAuth, email} = useAuth();
-    const {isAuth} = useAuth();
-    const dispatch = useDispatch();
+    //const {isAuth} = useAuth();
+    //const dispatch = useDispatch();
 
     const name = useSelector(state => state.user.name);
     const surname = useSelector(state => state.user.surname);
@@ -56,6 +56,7 @@ const HomePage = () => {
         <Navigate to='/login' />
     );
     */
+    
 }
 
 

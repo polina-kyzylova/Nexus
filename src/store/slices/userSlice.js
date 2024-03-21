@@ -6,7 +6,7 @@ const initialState = {
     phone: '+7 (994) 155-99-35',
     token: null,
     id: '11-11-111125',
-    name: 'Игорь',
+    name: 'Олег',
     last_name: 'Олегович',
     surname: 'Мартынов',
     group: 'ЭББ-22-1',
@@ -14,6 +14,23 @@ const initialState = {
     enrolled: '1234 о/п 22.08.2022 г.',
     acceptDate: '05 сентября 2022 г.'
 };
+
+
+/*
+const initialState = {
+    email: null,
+    phone: null,
+    token: null,
+    id: null,
+    name: null,
+    last_name: null,
+    surname: null,
+    group: null,
+    eduForm: null,
+    enrolled: null,
+    acceptDate: null
+};
+*/
 
 
 const userSlice = createSlice({
