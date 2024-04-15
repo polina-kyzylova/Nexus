@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from '../hooks/use-auth';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeUser } from "../store/slices/userSlice";
 
 import SideMenu from '../modules/Menu/Menu'
@@ -12,13 +12,8 @@ import CreatingOrders from "../modules/CreatingOrders/CreatingOrders";
 
 
 const HomePage = () => {
-    //const {isAuth, email} = useAuth();
-    //const {isAuth} = useAuth();
-    //const dispatch = useDispatch();
-
-    const name = useSelector(state => state.user.name);
-    const surname = useSelector(state => state.user.surname);
-
+    const {isAuth, name, surname} = useAuth();
+    const dispatch = useDispatch();
 
     // DONT TOUCH
     
@@ -38,8 +33,7 @@ const HomePage = () => {
     );
     
     
-
-
+    
     
     // DONT TOUCH
     /*
@@ -51,6 +45,31 @@ const HomePage = () => {
             <button onClick={() => dispatch(removeUser())}>
                 Log out
             </button>
+        </div>
+    ) : (
+        <Navigate to='/login' />
+    );
+    */
+
+
+
+
+    // FINAL
+    /*
+    return isAuth ? (
+        <div className={styles.page}>
+            <SideMenu />
+
+            <div className={styles.page_content}>
+                <h1>{name} {surname}</h1>   
+                <button onClick={() => dispatch(removeUser())}>
+                    Log out
+                </button>           
+                
+                <IDCard />
+                <OrdersHistory />
+                <CreatingOrders />
+            </div>
         </div>
     ) : (
         <Navigate to='/login' />
