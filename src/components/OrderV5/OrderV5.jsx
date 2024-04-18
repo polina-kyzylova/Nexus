@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./OrderV5.module.css";
 import FolderIcon from "@mui/icons-material/Folder";
-import image from "../success_orded.png";
+import success_order from '../success_order.png';
+import fail_order from '../fail_order.png';
 import currentDate from "../../hooks/currentDate";
 import OrderTemplate from "../OrderTemplate";
 
@@ -144,7 +145,7 @@ const OrderV5 = ({ active, setActive, orderNumber }) => {
             <h2>
                 Заявка <span>№{orderNumber}</span> отправлена!
             </h2>
-            <img src={image} alt="" />
+            <img src={success_order} alt="" />
 
             <div className={styles.success_info}>
                 <p>Обращение будет рассмотрено в течение <span>5 рабочих дней.</span></p>

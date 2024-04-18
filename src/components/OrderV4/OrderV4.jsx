@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './OrderV4.module.css';
-import image from '../success_orded.png';
+import success_order from '../success_order.png';
+import fail_order from '../fail_order.png';
 import currentDate from "../../hooks/currentDate";
 import OrderTemplate from '../OrderTemplate';
 
@@ -116,7 +117,7 @@ const OrderV4 = ({active, setActive, orderNumber}) => {
 
         <div className={styles.success}>
             <h2>Заявка <span>№{orderNumber}</span> отправлена!</h2>
-            <img src={image} alt=''/>
+            <img src={success_order} alt=''/>
 
             <div className={styles.success_info}>
                 <p>Обращение будет рассмотрено в течение <span>2 рабочих дней.</span></p>

@@ -1,0 +1,114 @@
+
+.menu {
+    width: 90%;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    background-color: #75BDF8;
+    border-radius: 2vw;
+}
+
+.wrapper {
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-rows: 20% 77%;
+    grid-auto-flow: row;
+    row-gap: 3%;
+    align-items: center;
+}
+
+.items {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 3vh repeat(7, 1fr) 3vh;
+}
+
+.items span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all .7s ease;
+
+    position: relative;
+}
+
+/*
+.items span:not(:last-child, :first-child, .focused):hover {
+    background-color: #60A9E3;
+}
+*/
+
+/* элемент в фокусе */
+.items span.focused {
+    background-color: #1670B7;
+    color: #fff;
+}
+
+/* подложка снизу */
+.items span.next:after {
+    background-color: #1670B7;
+    content: "";
+    position: absolute;
+    height: 2vh;
+    width: 2vh;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 0;
+    z-index: 1;
+}
+
+/* скругление снизу */
+.items span.focused:before {
+    background-color: #74BDF8;
+    content: "";
+    position: absolute;
+    height: 2vh;
+    width: 2vh;
+    bottom: -2vh;
+    right: 0;
+    border-radius: 0 100% 0 0;
+    z-index: 2;
+}
+
+
+/* подложка сверху */
+.items span.previous:after {
+    background-color: #1670B7;
+    content: "";
+    position: absolute;
+    height: 2vh;
+    width: 2vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0 0 0 0;
+    z-index: 1;
+}
+
+/* скругление сверху */
+.items span.focused::after {
+    background-color: #74BDF8;
+    content: "";
+    position: absolute;
+    height: 2vh;
+    width: 2vh;
+    top: -2vh;
+    right: 0;
+    border-radius: 0 0 100% 0;
+    z-index: 2;
+}
+
+
+
+.items p {
+    margin-left: 15%;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.5vw;
+}
+
+

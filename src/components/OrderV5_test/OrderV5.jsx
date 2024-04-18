@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import styles from "./OrderV5.module.css";
 import FolderIcon from "@mui/icons-material/Folder";
-import image from "../success_orded.png";
+import success_order from '../success_order.png';
+import fail_order from '../fail_order.png';
 import currentDate from "../../hooks/currentDate";
 import OrderTemplate from "../OrderTemplate";
 
 import { getDatabase, set, ref } from "firebase/database";
 import { useSelector, useDispatch } from "react-redux";
 //import { addOrder5 } from '../../store/slices/ordersSlice';
-
-
-import { getStorage, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
-
 
 
 const OrderV5 = ({ active, setActive }) => {
@@ -195,7 +192,7 @@ const OrderV5 = ({ active, setActive }) => {
             <h2>
                 Заявка <span>№{orderID}</span> отправлена!
             </h2>
-            <img src={image} alt="" />
+            <img src={success_order} alt="" />
 
             <div className={styles.success_info}>
                 <p>Обращение будет рассмотрено в течение <span>5 рабочих дней.</span></p>

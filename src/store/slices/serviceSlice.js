@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    urlV1: 'http://localhost/server/hs/nexus/neworderV1',
     urlV2: 'http://localhost/server/hs/nexus/neworderV2',
     urlV3: 'http://localhost/server/hs/nexus/neworderV3',
     urlV4: 'http://localhost/server/hs/nexus/neworderV4',

@@ -32,7 +32,7 @@ const EmailInput = ({onChange, text, validEmail}) => {
                     </select> : null
                 }
 
-                <label id='label' for='email-input'>Корпоративная почта</label>
+                <label id='label'>Корпоративная почта</label>
             </div>
 
             {validEmail ? null : validation()}

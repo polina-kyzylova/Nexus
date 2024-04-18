@@ -1,22 +1,24 @@
-import Logo from '../../components/Logo/Logo'
-import styles from './Menu.module.css'
+import Logo from '../../components/Logo/Logo';
+import './Menu.css';
 
 
 const Menu = () => {
     return (
-        <div className={styles.menu}>
-            <div className={styles.wrapper}>
+        <div className='menu'>
+            <div className='wrapper'>
                 <Logo />
 
-                <ul className={styles.items}>
-                    <li>Главная</li>
-                    <li>Курсы</li>
-                    <li>Расписание</li>
-                    <li>Оценки</li>
-                    <li>Чаты</li>
-                    <li>Документы</li>
-                    <li>Настройки</li>
-                </ul>
+                <div className='items'>
+                    <span></span>
+                    <span><p>Главная</p></span>
+                    <span><p>Курсы</p></span>
+                    <span><p>Расписание</p></span>
+                    <span><p>Оценки</p></span>
+                    <span className='previous'><p>Чаты</p></span>
+                    <span className='focused'><p>Документы</p></span>
+                    <span className='next'><p>События</p></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     )

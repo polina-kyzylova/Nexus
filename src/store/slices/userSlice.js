@@ -17,23 +17,21 @@ const initialState = {
 };
 */
 
-
-
 const initialState = {
     email: null,
     phone: null,
     token: null,
     id: null,
+    photo_url: null,
     card_id: null,
     name: null,
     last_name: null,
     surname: null,
     group: null,
-    eduForm: null,
+    edu_form: null,
     enrolled: null,
-    acceptDate: null
+    accept_date: null
 };
-
 
 
 const userSlice = createSlice({
@@ -45,31 +43,36 @@ const userSlice = createSlice({
             state.phone = action.payload.phone;
             state.token = action.payload.token;
             state.id = action.payload.id;
+            
             state.card_id = action.payload.card_id;
             state.name = action.payload.name;
             state.last_name = action.payload.last_name;
             state.surname = action.payload.surname;
             state.group = action.payload.group;
-            state.eduForm = action.payload.eduForm;
+            state.edu_form = action.payload.edu_form;
             state.enrolled = action.payload.enrolled;
-            state.acceptDate = action.payload.acceptDate;
+            state.accept_date = action.payload.accept_date;
+        },
+        setUserPhoto(state, action) {
+            state.photo_url = action.payload.photo_url;
         },
         removeUser(state) {
             state.email = null;
             state.phone = null;
             state.token = null;
             state.id = null;
+            state.photo_url = null;
             state.card_id = null;
             state.name = null;
             state.last_name = null;
             state.surname = null;
             state.group = null;
-            state.eduForm = null;
+            state.edu_form = null;
             state.enrolled = null;
-            state.acceptDate = null;
+            state.accept_date = null;
         },
     },
 });
 
-export const {setUser, removeUser} = userSlice.actions;
+export const {setUser, setUserPhoto, removeUser} = userSlice.actions;
 export default userSlice.reducer;

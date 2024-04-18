@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styles from './OrderV1.module.css'
-import image from '../success_orded.png';
+import success_order from '../success_order.png';
+import fail_order from '../fail_order.png';
 import currentDate from "../../hooks/currentDate";
 import OrderTemplate from '../OrderTemplate';
 import { useDispatch, useSelector } from "react-redux";
 import { addOrderV1 } from '../../store/slices/ordersSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -17,51 +19,48 @@ const OrderV1 = ({active, setActive}) => {
     const [serverOrderNumber, setServerOrderNumber] = useState();
 
     const user = useSelector(state => state.user);
-    const url = useSelector(state => state.service.urlV1);
     const dispatch = useDispatch();
-    const [ans, setAns] = React.useState();
+    const [error, setError] = useState('');
+    const url = 'http://localhost/server/hs/nexus/neworderV1';
 
 
-    const getAnswer = async () => {
-      const res = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({
-            "IDСтудента": user.id,
-            "Назначение": active,
-            "ЦельПолучения": purpose,
-            "ФИО": `${user.surname} ${user.name} ${user.last_name}`,
-            "Количество": amount,
-            "Формат": format,
-            "Группа": user.group,
-            "Почта": user.email,
-            "Телефон": user.phone
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-    }) 
-      const data = await res.json();
-      setAns(data);
+    // sent order to 1C
+    const getAnswer = () => {
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                "IDСтудента": user.card_id,
+                "Назначение": active,
+                "ЦельПолучения": purpose,
+                "ФИО": `${user.surname} ${user.name} ${user.last_name}`,
+                "Количество": amount,
+                "Формат": format,
+                "Группа": user.group,
+                "Почта": user.email,
+                "Телефон": user.phone
+            }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+            return response.json();
+            }
+            throw response;
+        })
+        .then(data => {
+            setServerOrderNumber(data.Номер);
+        })
+        .catch(error => {
+            console.log('Error fetching data: ', error);
+            setError(error);
+        })
     };
-  
-    React.useEffect(() => {
-      getAnswer();
-    }, []);
 
     function sentOrder() {
         if (format !== '' && purpose !== '') {
-            setServerOrderNumber(ans.Номер);
-
-            dispatch(addOrderV1({
-                orderNumber: ans.Номер,
-                orderDate: currentDate(),
-                status: 'В обработке',
-                orderPurpose: active,
-                orderReason: purpose,
-                docFormat: format,
-                docAmount: amount,
-            }));
-
+            getAnswer();
             setValid(false);
             setOrder(false);
         } else {
@@ -70,8 +69,33 @@ const OrderV1 = ({active, setActive}) => {
         }
     }
 
+    function showOrderResult() {
+        if (serverOrderNumber) {
+            dispatch(addOrderV1({
+                Номер_Заявки: serverOrderNumber,
+                Дата_Заявки: currentDate(),
+                Статус: 'Новая',
+                Назначение: active,
+                Причина: purpose,
+                Формат: format,
+                Количество: amount,
+            }));
+
+            return (
+                <div className={styles.success}>
+                    <h2>Заявка <span>№{serverOrderNumber}</span> отправлена!</h2>
+                    <img src={success_order} alt=''/>
+                    <p>Срок исполнения: 3 рабочих дня (вы получите уведомление)</p>
+                    <button className={styles.success_btn} onClick={() => {setActive(false); setOrder(true)}}>Ок</button>
+                </div> 
+            )
+        } else {
+            return <CircularProgress size='5vw' color="success" />
+        }
+    }
 
 
+    // order form validation 
     const MinAmount = () => {
         if (amount > 1) setAmount(amount - 1);
         else setAmount(1);
@@ -159,12 +183,13 @@ const OrderV1 = ({active, setActive}) => {
             </div>
         </div> :
 
-        <div className={styles.success}>
-            <h2>Заявка <span>№{serverOrderNumber}</span> отправлена!</h2>
-            <img src={image} alt=''/>
-            <p>Срок исполнения: 3 рабочих дня (вы получите уведомление)</p>
-            <button className={styles.success_btn} onClick={() => {setActive(false); setOrder(true)}}>Ок</button>
-        </div> 
+        error ? 
+        <div className={styles.server_err}>
+            <img src={fail_order} alt="" />
+            <p>Ошибка сервера :(<br /> Попробуйте позже</p> 
+            <button className={styles.cancel_btn} onClick={() => setActive(false)}>Ок</button>
+        </div>
+        : showOrderResult()
     )
 }
 

@@ -8,11 +8,17 @@ const ordersSlice = createSlice({
     initialState,
     reducers: {
         addOrderV1(state, action) {
-            return [...state, action.payload];
+            state.push(action.payload);
         },
+        initAllOrders(state, action) {
+            return [...state, ...action.payload];
+        },
+        deleteAllOrders() {
+            return [];
+        }
     },
 });
 
 
-export const {addOrderV1} = ordersSlice.actions;
+export const {addOrderV1, initAllOrders, deleteAllOrders} = ordersSlice.actions;
 export default ordersSlice.reducer;

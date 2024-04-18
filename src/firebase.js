@@ -31,5 +31,3 @@ export const database = getDatabase(app);
 export const storage = getStorage(app, "gs://rctn-9de70.appspot.com");
 
 
-
-

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/slices/userSlice';
+import { initAllOrders } from '../../store/slices/ordersSlice';
+
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 
@@ -12,14 +14,12 @@ import CheckBox from '../../components/CheckBox';
 
 
 
-
 const Form = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [validEmail, setValidEmail] = useState(true);
     const [validPass, setValidPass] = useState(true);
 
-    
     // manage email input
     const [text, setText] = useState(true); 
     const changeEmail = (e) => {
@@ -35,11 +35,23 @@ const Form = () => {
         }
     }
 
-
-    // authentification
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+    const url = 'http://localhost/server/hs/nexus/getOrders/';
+
+    // get user orders from 1C
+    const getAllOrders = async (userUrl) => {
+        try {
+            const res = await fetch(userUrl) 
+            const data = await res.json();
+            dispatch(initAllOrders(data));
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    };
+
+    // Firebase authentification 
     const handleLogin = (email, password) => {
         if (email && pass) {
             const auth = getAuth();
@@ -49,19 +61,25 @@ const Form = () => {
                     const dbRef = ref(getDatabase());
                     get(child(dbRef, `/students/${user.uid}/`)).then((snapshot) => {
                     if (snapshot.exists()) {
+                        navigate('/');
                         const userData = snapshot.val();
-                        //console.log(userData);
-
+                        
                         dispatch(setUser({
                             email: user.email,
                             id: user.uid,
+                            card_id: userData.card_id,
                             token: user.accessToken,
                             name: userData.name,
                             last_name: userData.last_name,
                             surname: userData.surname,
                             group: userData.group,
+                            phone: userData.phone,
+                            edu_form: userData.edu_form,
+                            enrolled: userData.enrolled,
+                            accept_date: userData.accept_date,
                         }));
-                        navigate('/');
+
+                        getAllOrders(url + userData.card_id); 
                     } else {
                         console.log("No data available");
                     }
@@ -81,8 +99,7 @@ const Form = () => {
             setValidPass(false)
         }
     }
-
-
+    
 
     return (
         <div className={styles.form}>
@@ -114,4 +131,5 @@ const Form = () => {
 
 
 export {Form}
+
 

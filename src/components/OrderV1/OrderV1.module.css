@@ -222,3 +222,30 @@
     font-weight: 400;
     font-size: 1.1vw;
 }
+
+
+
+.server_err {
+    width: 90%;
+    height: 95%;
+    display: grid;
+    grid-template-rows: 50% auto 15%;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+}
+
+.server_err img {
+    width: 15vw;
+    align-self: end;
+}
+
+.server_err p {
+    color: #fff;
+    font-family: 'Overpass';
+    font-weight: 400;
+    font-size: 1.3vw;
+    line-height: 2vw;
+    align-self: start;
+    margin-top: 5%;
+}
