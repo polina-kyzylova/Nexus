@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    urlV2: 'http://localhost/server/hs/nexus/neworderV2',
-    urlV3: 'http://localhost/server/hs/nexus/neworderV3',
-    urlV4: 'http://localhost/server/hs/nexus/neworderV4',
-    urlV5: 'http://localhost/server/hs/nexus/neworderV5',
+    isOrdersLoaded: false,
 };
 
 const serviceSlice = createSlice({
     name: 'service',
     initialState,
+    reducers: {
+        setOrdersLoaded(state, action) {
+            state.isOrdersLoaded = action.payload.isOrdersLoaded;
+        },
+    },
 });
 
+
+export const {setOrdersLoaded} = serviceSlice.actions;
 export default serviceSlice.reducer;

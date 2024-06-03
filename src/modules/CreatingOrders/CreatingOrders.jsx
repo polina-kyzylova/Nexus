@@ -1,17 +1,15 @@
-import BlueLabel from '../../components/BlueLabel'
-import styles from './CreatingOrders.module.css'
+import BlueLabel from '../../components/BlueLabel';
+import styles from './CreatingOrders.module.css';
 import OrderModal from '../OrderModal/OrderModal';
 import { useState } from "react";
 
 
-
 const CreatingOrders = () => {
+    const [modalActive, setModalActive] = useState(false);
     const btn = {
         backgroundColor: '#04375F',
         color: '#75BDF8',
     }
-
-    const [modalActive, setModalActive] = useState(false);
 
     return (
         <div className={styles.container}>
@@ -20,7 +18,7 @@ const CreatingOrders = () => {
 
                 <div className={styles.items}>
                     <button onClick={() => setModalActive('Справка с места обучения')}>Справка с места обучения</button>
-                    <button onClick={() => setModalActive('Табель успеваемости')}>Табель успеваемости</button>
+                    <button onClick={() => setModalActive('Справка об успеваемости')}>Справка об успеваемости</button>
                     <button onClick={() => setModalActive('Повышенная стипендия')}>Повышенная стипендия</button>
                     <button onClick={() => setModalActive('Перевод на бюджетное место')}>Перевод на бюджетное место</button>
                     <button onClick={() => setModalActive('Перевод на другое направление')}>Перевод на другое направление</button>
@@ -31,14 +29,12 @@ const CreatingOrders = () => {
                 </div>
             </div>
 
-            <OrderModal 
-                active={modalActive}
-                setActive={setModalActive}
-                orderNumber='11111111111'
-            />
+            <OrderModal active={modalActive} setActive={setModalActive} />
         </div>
     )
 }
 
-
 export default CreatingOrders;
+
+
+

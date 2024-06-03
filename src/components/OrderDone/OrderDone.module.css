@@ -34,6 +34,10 @@
 }
 
 #repeat, #confirm {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    
     font-family: 'Overpass';
     font-weight: 200;
     font-size: 1vw;

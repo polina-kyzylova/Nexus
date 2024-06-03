@@ -74,11 +74,13 @@ const OrderV1 = ({active, setActive}) => {
             dispatch(addOrderV1({
                 Номер_Заявки: serverOrderNumber,
                 Дата_Заявки: currentDate(),
-                Статус: 'Новая',
+                ID_Студента: user.card_id,
+                Студент: user.surname + ' ' + user.name + ' ' + user.last_name,
                 Назначение: active,
                 Причина: purpose,
                 Формат: format,
                 Количество: amount,
+                Статус: 'Новая',
             }));
 
             return (

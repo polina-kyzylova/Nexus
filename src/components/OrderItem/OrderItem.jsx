@@ -1,11 +1,25 @@
-import styles from './OrderItem.module.css'
+import styles from './OrderItem.module.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const OrderItem = ({number, date, status}) => {
     function showStatus() {
-        if (status === 'Новая') return <span style={{backgroundColor: '#1670B7'}}>В обработке</span>
-        if (status === 'Готово') return <span style={{backgroundColor: '#46FF96'}}>Готово</span>
-        if (status === 'Получено') return <span style={{backgroundColor: '#323E48'}}>Получено</span>  //696F73
+        if (status === 'Новая') return (
+            <span style={{backgroundColor: '#1670B7'}}>
+                <Link to={'/history/#' + number} className={styles.link_order}>
+                    В обработке
+                </Link>
+            </span>
+        )
+
+        if (status === 'Выполнена') return (
+            <span style={{backgroundColor: '#46FF96'}}>
+                <Link to={'/history/#' + number} className={styles.link_order}>
+                    Готово
+                </Link>
+            </span>
+        )
     }
 
     return (

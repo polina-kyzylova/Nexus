@@ -9,20 +9,26 @@ import OrderRecieved from '../../components/OrderRecieved/OrderRecieved';
 
 
 
+
 export default function HistoryItem({date, number, orderStatus,
                                     fullName, email, group, phone, 
-                                    purpose, format, amount, 
-                                    corpus, room, manager, workTime, files}) {
+                                    purpose, format, amount, files}) {
  
     function showOrderStatus() {
-        if (orderStatus === 'В обработке') return <OrderProcessing orderStatus={orderStatus} />
-        if (orderStatus === 'Готово') return <OrderDone orderStatus={orderStatus} /> 
-        if (orderStatus === 'Получено') return <OrderRecieved orderStatus={orderStatus} />
+        if (orderStatus === 'Новая') return <OrderProcessing orderStatus='В обработке' orderNumber={number} />
+        if (orderStatus === 'Выполнена') return <OrderDone orderStatus='Готово' orderNumber={number} /> 
+        if (orderStatus === 'Получена') return <OrderRecieved orderStatus='Получено' />
+    }
+
+    function amountPrefix() {
+        if (amount === 1) return <p>{amount} экземпляр</p>
+        if (amount >= 2 && amount <= 4) return <p>{amount} экземпляра</p>
+        if (amount > 4) return <p>{amount} экземпляров</p>
     }
 
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id={number}>
         {showOrderStatus()}
 
         <div className={styles.core}>
@@ -40,7 +46,7 @@ export default function HistoryItem({date, number, orderStatus,
                 <div className={styles.info}>
                     <p>{fullName}</p>
                     <p>{email}</p>
-                    <p>{phone}</p>
+                    <p>+{phone}</p>
                     <p>{group}</p>
                 </div>
             </div>
@@ -54,11 +60,11 @@ export default function HistoryItem({date, number, orderStatus,
                 <div className={styles.info}>
                     <p>{purpose}</p>
                     <p>{format} формат</p>
-                    {amount ? <p>{amount} экземпляра</p> : null }
+                    {amount ? amountPrefix() : null }
                 </div>
             </div>
 
-            {format === 'Бумажный' ?
+            {orderStatus !== 'Новая' && format === 'Бумажный' ?
                 <div className={styles.place}>
                     <div className={styles.thing}>
                         <img src={place} alt='' />
@@ -66,9 +72,10 @@ export default function HistoryItem({date, number, orderStatus,
                     </div>
 
                     <div className={styles.info}>
-                        <p>Корпус {corpus}, кабинет {room}</p>
-                        <p>Методист {manager}</p>
-                        <p>{workTime}</p>
+                        <p>ул. Мельникайте, 70 (корпус 7)</p>
+                        <p>Кабинет 204</p>
+                        <p>Методист Юсупова. А. Н.</p>
+                        <p>С 9:00 до 17:00</p>
                     </div> 
                 </div> : null
             }

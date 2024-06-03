@@ -1,9 +1,9 @@
-import React from "react"
-import styles from './AuthorizeForm.module.css'
-import Button from "../components/Button"
-import EmailInput from '../components/EmailInput/EmailInput'
-import PasswordInput from "../components/PasswordInput/PasswordInput"
-import CheckBox from "../components/CheckBox"
+import React from "react";
+import styles from './AuthorizeForm.module.css';
+import Button from "../components/Button";
+import EmailInput from '../components/EmailInput/EmailInput';
+import PasswordInput from "../components/PasswordInput/PasswordInput";
+import CheckBox from "../components/CheckBox";
 
 
 const AuthorizeForm = ({handleClick}) => {

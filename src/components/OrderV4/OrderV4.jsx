@@ -83,7 +83,7 @@ const OrderV4 = ({active, setActive, orderNumber}) => {
                         <p>Преподаватель:</p>
                         <div>
                             <textarea 
-                                className={styles.area_prof} 
+                                className={styles.area_disc} 
                                 id='professor' 
                                 value={professor}
                                 onChange={(e) => setProfessor(e.target.value)}
@@ -93,21 +93,8 @@ const OrderV4 = ({active, setActive, orderNumber}) => {
                             {validProf ? <h5>Заполните поле</h5> : null}
                         </div>
                     </div>
-
-                    <div className={styles.area}>
-                        <p>Причина задолженности:</p>
-                        <select 
-                            name="reason"
-                            id="reason"
-                            value={reason}
-                            onChange={(e) => setReason(e.target.value)}>
-                                <option value='IncreaseScore'>Неудовлетворительная оценка</option>
-                                <option value='Personal'>Уважительный пропуск</option>
-                        </select>
-                    </div>
                 </div>
             </div>
-
 
             <div className={styles.footer}>
                 <button className={styles.cancel_btn} onClick={() => setActive(false)}>Отмена</button>

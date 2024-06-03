@@ -1,0 +1,17 @@
+.notific {
+    width: 2.2vw;
+    cursor: pointer;
+}
+
+.order {
+    width: 3vw;
+    margin: 1%;
+}
+
+.text {
+    padding: 1vw;
+}
+
+.text span {
+    color: "#4FF597";
+}

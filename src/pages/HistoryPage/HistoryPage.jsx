@@ -3,57 +3,43 @@ import styles from './HistoryPage.module.css';
 import HistoryItem from '../../modules/HistoryItem/HistoryItem';
 import { Link } from 'react-router-dom';
 import arrow from './arrow_back.png';
+import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
 
 export default function HistoryPage() {
-    const orders = [
-        {
-            'id': '111111',
-            'date': '22.10.2020',
-            'status': 'В обработке',
-            'purpose': 'Справка с места обучения',
-            'format': 'Электронный'
-        }, 
-        {
-            'id': '222222',
-            'date': '12.11.2022',
-            'status': 'Готово',
-            'purpose': 'Табель успеваемости',
-            'format': 'Бумажный',
-            'amount': '2'
-        }, 
-        {
-            'id': '333333',
-            'date': '15.11.2020',
-            'status': 'Получено',
-            'purpose': 'Повышенная стипендия',
-            'format': 'Электронный',
-            'files': 'file1'
-        }
-    ];
+    const orders = useSelector(state => state.orders);
+    const user = useSelector(state => state.user);
 
+    const sortedItems = useMemo(
+        () => orders.slice().sort(function(x, y) {
+            if (x.Статус_Код > y.Статус_Код) {
+                return 1;
+              }
+              if (x.Статус_Код < y.Статус_Код) {
+                return -1;
+              }
+              return 0;
+            }),
+        [orders],
+    );
 
     function generateOrders() {
-        return orders.map(element =>
+        return sortedItems.map(order =>
             React.cloneElement(
                 <HistoryItem
-                    date={element.date}
-                    number={element.id}
-                    orderStatus={element.status}
-                    fullName='Иванов Иван Иванович'
-                    email='ivanovii@std.tyuiu.ru'
-                    phone='+7 (999) 111-11-11'
-                    group='ПКТб-22-1'
-                    purpose={element.purpose}
-                    format={element.format}
-                    amount={element.amount}
-                    corpus='7'
-                    room='206'
-                    manager='Петрова А. Н.'
-                    workTime='ПН-ПТ 09:00 - 17:00'
-                    files={element.files}
+                    date={order.Дата_Заявки}
+                    number={order.Номер_Заявки}
+                    orderStatus={order.Статус}
+                    fullName={order.Студент}
+                    email={user.email}
+                    phone={user.phone}
+                    group={user.group}
+                    purpose={order.Назначение}
+                    format={order.Формат}
+                    amount={order.Количество}
                 />,
-                { key: element.id }
+                { key: order.Номер_Заявки }
             ))
     }
 

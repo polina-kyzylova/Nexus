@@ -13,12 +13,11 @@ const OrderModal = ({active, setActive, orderNumber}) => {
     const [order, setOrder] = useState(true);
 
     function orderVariant(act) {
-        if (act === 'Справка с места обучения' || act === 'Табель успеваемости') {
+        if (act === 'Справка с места обучения' || act === 'Справка об успеваемости') {
             return (
                 <OrderV1
                 active={active}
                 setActive={setActive}
-                orderNumber={orderNumber}
                 />)}
         else if (act === 'Перевод на бюджетное место' || 
                  act === 'Перевод на другое направление' ||
@@ -28,27 +27,23 @@ const OrderModal = ({active, setActive, orderNumber}) => {
                 <OrderV2
                 active={active}
                 setActive={setActive}
-                orderNumber={orderNumber}
                 />)}
         else if (act === 'Повышенная стипендия') {
             return (<OrderV3 
                 active={active}
                 setActive={setActive}
-                orderNumber={orderNumber}
                 />)
         }
         else if (act === 'Задолженность') {
             return (<OrderV4
                 active={active}
                 setActive={setActive}
-                orderNumber={orderNumber}
             />)
         }
         else {
             return (<OrderV5_test 
                 active={active}
                 setActive={setActive}
-                orderNumber={orderNumber}
             />)
         }
     }

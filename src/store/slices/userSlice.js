@@ -30,7 +30,8 @@ const initialState = {
     group: null,
     edu_form: null,
     enrolled: null,
-    accept_date: null
+    accept_date: null,
+    status_code: null
 };
 
 
@@ -43,7 +44,6 @@ const userSlice = createSlice({
             state.phone = action.payload.phone;
             state.token = action.payload.token;
             state.id = action.payload.id;
-            
             state.card_id = action.payload.card_id;
             state.name = action.payload.name;
             state.last_name = action.payload.last_name;

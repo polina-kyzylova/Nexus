@@ -27,8 +27,11 @@
     padding: 1%;
     display: flex;
     justify-content: center;
-
     border-radius: 0.5vw;
+}
+
+.link_order {
+    text-decoration: none;
     color: #000;
     font-family: 'Overpass';
     font-size: 0.85vw;

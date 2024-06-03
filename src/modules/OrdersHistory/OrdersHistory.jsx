@@ -6,37 +6,57 @@ import OrderItem from '../../components/OrderItem/OrderItem'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useMemo } from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const OrdersHistory = () => {
+    const isLoading = useSelector(state => state.service.isOrdersLoaded);
     const orders = useSelector(state => state.orders);
+    
+    const sortedItems = useMemo(
+        () => orders.slice().sort(function(x, y) {
+            if (x.Статус_Код > y.Статус_Код) {
+                return 1;
+              }
+              if (x.Статус_Код < y.Статус_Код) {
+                return -1;
+              }
+              return 0;
+            }),
+        [orders],
+    );
 
     function generate(array) {
-        return array.map((i) =>
+        return array.map(order =>
         React.cloneElement(
             <OrderItem
-                number={orders[i-1].Номер_Заявки}
-                date={orders[i-1].Дата_Заявки}
-                status={orders[i-1].Статус}
+                number={order.Номер_Заявки}
+                date={order.Дата_Заявки}
+                status={order.Статус}
             />,
-            { key: i }
+            { key: order.Номер_Заявки }
         ));
     }
-    
-    function showOrders() {
-        if (orders.length) {
-            let ordersArray = [];
 
-            if (orders.length < 3) {
-                for (let i=orders.length; i >= 1; i--) ordersArray.push(i);
-                return generate(ordersArray);
-            }
-            else {
-                for (let i=orders.length; i > orders.length - 3; i--) ordersArray.push(i);
-                return generate(ordersArray);
-            }
-        } else {
-            return <p className={styles.noOrders}>Нет текущих заявок</p>
+
+    function showOrders() {
+        if (!orders.length) return <p className={styles.noOrders}>Нет текущих заявок</p>
+        else {
+            const items = sortedItems.filter(i => {
+                if (i.Статус !== 'Получена') return i;
+                else return false;
+            }); 
+
+            let border = items.length;
+            let result = [];
+
+            if (items.length >= 3) result = items.slice(0, 3);
+            else result = items.slice(0, border);
+                
+            if (result.length) return generate(result);
+            else return <p className={styles.noOrders}>Нет текущих заявок</p>
         }
     }
 
@@ -53,7 +73,7 @@ const OrdersHistory = () => {
                     </Link>
                 </div>
 
-                {showOrders()}
+                {isLoading ? showOrders() : <CircularProgress className={styles.noOrders} size='3vw' color="primary" />}
             </div>
         </div>
     )

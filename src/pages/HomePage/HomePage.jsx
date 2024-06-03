@@ -10,12 +10,10 @@ import styles from './HomePage.module.css'
 import IDCard from '../../modules/IDCard/IDCard'
 import OrdersHistory from "../../modules/OrdersHistory/OrdersHistory";
 import CreatingOrders from "../../modules/CreatingOrders/CreatingOrders";
+import Notifications from "../../components/Notifications/Notifications";
 
 
-import notif from './notifications.png';
 import profile from './profile.png';
-
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -58,11 +56,9 @@ const HomePage = () => {
         },
     });
 
-
-
+      
     // DONT TOUCH
-    
-    
+
     //return (
     return isAuth ? (
         <div className={styles.page}>
@@ -71,9 +67,7 @@ const HomePage = () => {
             <div className={styles.page_content}>
                 <h1>{name} {surname}</h1>   
                 <div className={styles.profile}>
-                    <Badge badgeContent={0} color="error">
-                        <img className={styles.notific} src={notif} alt="" />
-                    </Badge>
+                    <Notifications />
 
                     <ThemeProvider theme={darkTheme}>
                         <Box sx={{display: 'flex', alignItems: 'center', textAlign: 'center' }}>

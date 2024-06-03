@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/slices/userSlice';
 import { initAllOrders } from '../../store/slices/ordersSlice';
+import { setOrdersLoaded } from "../../store/slices/serviceSlice";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
@@ -45,6 +46,8 @@ const Form = () => {
             const res = await fetch(userUrl) 
             const data = await res.json();
             dispatch(initAllOrders(data));
+            dispatch(setOrdersLoaded({isOrdersLoaded: true}));
+            console.log('data load from 1C is done')
         } catch (error) {
             console.log(error);
             return null;
@@ -101,6 +104,7 @@ const Form = () => {
     }
     
 
+
     return (
         <div className={styles.form}>
             <h2>Вход в Личный кабинет</h2>
@@ -123,7 +127,7 @@ const Form = () => {
 
             <div className={styles.section}>
                 <button className={styles.enter_btn} onClick={() => handleLogin(email, pass)}>Войти</button>
-                <button className={styles.reset_btn} onClick={() => navigate('/restore-access')}>Не могу войти</button>
+                <button className={styles.reset_btn}>Не могу войти</button>
             </div>
         </div>
     )

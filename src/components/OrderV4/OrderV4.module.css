@@ -118,7 +118,7 @@
     font-size: 1vw;
 }
 
-.area_prof, .area_disc {
+.area_disc {
     height: 5vw;
     width: 18vw;
     resize: none;
@@ -132,12 +132,6 @@
     font-family: 'Overpass';
     font-weight: 400;
     font-size: 1vw;
-}
-
-.area_prof {
-    width: 18vw;
-    height: 3vw;
-    resize: none;
 }
 
 .area select {
