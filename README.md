@@ -6,8 +6,8 @@
 # Architecture
 University administrators work with 1C Enterprise software, so it would be convenient for them to accept, process, and send the results of student orders in the same place. Based on this information, the module's architecture consists of components such as:
 <ul>
-  <li>Frontend - React, Redux-toolkit</li>
-  <li>Backend - 1C Enterprice, HTTP-service Express.js, WebSocket</li>
+  <li>Frontend - React, Redux</li>
+  <li>Backend - 1C, Express.js, WebSocket</li>
   <li>Database - Firebase</li>
 </ul>
 
