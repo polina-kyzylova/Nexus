@@ -12,6 +12,6 @@ University administrators work with 1C Enterprise software, so it would be conve
 </ul>
 
 # Project presentation
-<p>You can find more information about the project at the following link:<br />
-  https://www.behance.net/gallery/187759097/Nexus-platform-for-students
+<p>You can find more information about the Nexus project on Behance:<br />
+  <a href="https://www.behance.net/gallery/187759097/Nexus-platform-for-students" target="_blank" rel="noopener noreferrer">View the Nexus project presentation</a>
 </p>
